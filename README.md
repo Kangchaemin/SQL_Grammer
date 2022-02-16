@@ -36,7 +36,7 @@
 &nbsp;
 
 ## ※DATE, TIMESTAMP 형식
-> DATE : '2013-02-15' 형식
+> DATE : '2013-02-15' 형식 &nbsp;
 > TIMESTAP : 'DATE형식 + 시분초까지'
 
 &nbsp;
