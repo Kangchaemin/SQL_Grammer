@@ -46,8 +46,8 @@
 > IN을 쓰는것이 속도에 더 좋다.
 ##### EX) 조회수가 0, 1, 2인 게시글을 조회하시오
 &nbsp;
-WHERE 조회수 = 0 OR 조회수 = 1 .... ▶ <font color='#1E90FF'>이렇게 하면  범주가 커지게되면 힘들어질수도있다.</font>  
-<mark style='background-color: #f1f8ff'> 연한 파랑 </mark>  
+WHERE 조회수 = 0 OR 조회수 = 1 .... ▶이렇게 하면  범주가 커지게되면 힘들어질수도있다.
+
 따라서 0~2까지로 범위를 본다면  
 WHERER 0<=조회수 AND 조회수 <=2;  
 WHERE 조회수 BETWEEN 0 AND 2;  
