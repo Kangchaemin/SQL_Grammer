@@ -270,3 +270,10 @@ WHERE MONTHS_BETWEEN(SYSDATE, REGDATE) < 6; --이렇게 할 수도 있당
     ★AS 명칭 쓰기
     SELECT (EXTRACT(MONTH FROM SYSDATE) || '월') AS '월만추출' FROM DUAL; -- X
     SELECT (EXTRACT(MONTH FROM SYSDATE) || '월') AS 월만추출 FROM DUAL; -- O
+    
+&nbsp;
+&nbsp;
+
+## ※형식변환 함수
+
+![형식변환함수](https://user-images.githubusercontent.com/43837994/154638391-624af7dc-6c5c-4929-889c-eca0c48f7067.PNG)
