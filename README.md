@@ -223,13 +223,13 @@ ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';
 3) 날짜 추출함수 - EXTRACT  
 SELECT EXTRAC(YEAR FROM SYSDATE) FROM DUAL;  
 
-4) NEXT_DAY : 다음날을 알려주는 함수
-SELECT NEXT_DAY(SYSDATE, '토') FROM DUAL; -- 토요일이 언제냐. ( 토요일도 가능.)
-SELECT NEXT_DAY(SYSDATE, 7) FROM DUAL;
+4) NEXT_DAY : 다음날을 알려주는 함수  
+SELECT NEXT_DAY(SYSDATE, '토') FROM DUAL; -- 토요일이 언제냐. ( 토요일도 가능.)  
+SELECT NEXT_DAY(SYSDATE, 7) FROM DUAL;  
 
-6) LAST_DAY : 달의 마지막일을 알고싶을때
-SELECT LAST_DAY(SYSDATE) FROM DUAL; -> 하면 2월의 마지막날이 나온다. 
-SELECT LAST_DAY(ADD_MONTHS(SYSDATE, 2)) FROM DUAL; -> 4월의 마지막날이 나온다.
+6) LAST_DAY : 달의 마지막일을 알고싶을때  
+SELECT LAST_DAY(SYSDATE) FROM DUAL; -> 하면 2월의 마지막날이 나온다.  
+SELECT LAST_DAY(ADD_MONTHS(SYSDATE, 2)) FROM DUAL; -> 4월의 마지막날이 나온다.  
 
 7) 날짜에서도 ROUND랑 TRUNC가 사용된다.
 
