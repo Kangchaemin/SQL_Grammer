@@ -107,7 +107,7 @@ FROM all_col_comments WHERE comments LIKE ~~쓰면 된다.
     SELECT SUBSTR('HELLO', 1, 3) FROM 테이블
     SUBSTRB('HELLO', 3) -> Byte단위로 자른다(??)
 
-##### ♠EX) 모든학생의 이름과 출생 월만을 조회하시오
+#### ♠EX) 모든학생의 이름과 출생 월만을 조회하시오
 
 SELECT NAME, SUBSTR(BIRTHDAY, 6, 2) FROM MEMBER; -- 6번째글자부터 2글자만 SUBSTRING해주세요.  
 &nbsp;
