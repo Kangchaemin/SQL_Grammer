@@ -2,7 +2,7 @@
 &nbsp;
 ## ※DDL, DML, DCL에 관련해서
 
-| Plugin | 종류 |
+| 용어 | 종류 |
 | ------ | ------ |
 | DDL | CREATE / ALTER / DROP |
 | DML | SELECT / INSERT / UPDATE / DELETE |
