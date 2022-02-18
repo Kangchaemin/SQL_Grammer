@@ -147,3 +147,126 @@ SELECT NAME, REPLACE(BIRTHDAY, '-', '') FROM MEMBER;
 
 &nbsp;
 ### ◎ LPAD, RPAD도 알아두기. (문자열 함수에서) 
+
+&nbsp;
+&nbsp;
+
+## ※ROUWNUM
+> ROWNUM은 옆에 붙는 숫자이다.
+SELECT ROWNUM, NOTICE.*  
+FROM NOTICE; -- ROWNUM이 붙어서 나온다. 
+
+    회원목록에서 상위 5명만 조회하시오.  
+    WHERE ROWNUM BETWEEN 1 AND 5  
+    WHERE ROWNUM BETWEEN 6 AND 10; -- 아무것도 안나옴 ( 2부터 해도 안나온다.)
+
+> ROWNUM은 SELECT 문장이 실행될때 만들어진다.  
+따라서 ROWNUM > 5 이렇게 하면 처음에 만들어진 ROWNUM은 항상 1이기 때문에 조건에 맞지 않는다. 
+
+따라서  
+SELECT *  
+FROM (SELECT ROWNUM NUM, MEMER.* FROM MEMBER)-- ROWNUM은 미리 속괄호에서 붙여준다.  
+WHERE NUM BETWEEN 1 AND 5  
+▶괄호가 먼저 실행된다.
+&nbsp;
+> SELECT NOTICE.ID FROM NOTICE; 이렇게 쓰는걸
+NOTICE.* 이렇게 쓸 수 있는 것이다. 
+
+&nbsp;
+> SELECT * FROM (SELECT ROWNUM, NOTICE.* FROM NOTICE)  
+WHERE ROWNUM BETWEEN 6 AND 10;  
+-- 실행 X. 왜냐면 ROWNUM이라는게 중복이 되서 괄호 위에 ROWNUM이랑 중복된다.  
+따라서 명칭을 붙여줘야한다. 
+
+&nbsp;
+
+    명칭을 붙여서 쓴 최종본
+    SELECT * FROM (SELECT ROWNUM NUM, NOTICE.* FROM NOTICE)
+    WHERE NUM BETWEEN 6 AND 10;
+&nbsp;
+&nbsp;
+    
+## ※숫자함수
+
+
+1) ABS : 절대값을 구하는 함수
+SELECT ABS(35), ABS(-35) FROM DUAL; -- 절댓값 함수
+
+2) SIGN : 음수/양수를 알려주는 함수
+SELECT SIGN(35), SIGN(0) FROM DUAL -- 결과값 = 양수:1 음수:-1 영:0
+
+3) ROUND(N, I) : 숫자 반올림 값을 알려주는 함수
+SELECT ROUND(34.5678) FROM DUAL -- 결과값 = 35. 
+ROUND(34.5678, 2) = 소숫점 둘째자리까지 보여달라(반올림해서) -- 결과값 = 34.57
+
+4) MOD(N1, N2) :  숫자의 나머지 값을 반환하는 함수
+TRUNC(17/5) -- 결과값=3
+MOD(17, 5) -- 결과값=2
+
+5) POWER(N1, N2) / SQRT(N): 숫자의 제곱근을 구하는 함수, 제곱근을 구하는 함수
+POWER(5, 2) -- 25
+SQRT(25) -- 5
+
+&nbsp;
+&nbsp;
+## ※날짜함수
+
+1) 현재 시간을 얻는 함수  
+SYSDATE, CURRENT_DATE,  
+SYSTIMESTAMP, CURRENT_TIMESTAMP
+
+2) 세션 시간과 포맷변경  
+(ALTER SESSION SET TIME_ZON = '-1:0' 이건 시간대를 변경하는듯..?)  
+ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';  
+▶SYSDATE, CURRENT_DATE 의 양식을 바꿔준다.
+
+3) 날짜 추출함수 - EXTRACT  
+SELECT EXTRAC(YEAR FROM SYSDATE) FROM DUAL;  
+
+4) NEXT_DAY : 다음날을 알려주는 함수
+SELECT NEXT_DAY(SYSDATE, '토') FROM DUAL; -- 토요일이 언제냐. ( 토요일도 가능.)
+SELECT NEXT_DAY(SYSDATE, 7) FROM DUAL;
+
+6) LAST_DAY : 달의 마지막일을 알고싶을때
+SELECT LAST_DAY(SYSDATE) FROM DUAL; -> 하면 2월의 마지막날이 나온다. 
+SELECT LAST_DAY(ADD_MONTHS(SYSDATE, 2)) FROM DUAL; -> 4월의 마지막날이 나온다.
+
+7) 날짜에서도 ROUND랑 TRUNC가 사용된다.
+
+##### ♠EX) BRTHDAY의 YEAR만 뽑아보기
+SELECT EXTRACT(YEAR FROM MEMBER.BIRTHDAY)  
+FROM MEMBER;  
+> BIRTHDAY는 지금 VARCHAR 형식이여서 추출이 안된다. 따라서 DATE형식으로 바꿔줘야 인식이된다.   
+EXTRACT(YEAR FROM TO_DATE(BIRTHDAY,'YYYY-MM-DD')) 
+
+
+&nbsp;
+##### ♠EX)  가입한 회원중에 2, 3, 11월에 태어난 사람의 이름과 생일 출력
+SELECT NAME, BIRTHDAY  
+FROM MEMBER  
+WHERE EXTRACT(MONTH FROM TO_DATE(BIRTHDAY,'YYYY-MM-DD')) IN (2, 3, 11, 12); 
+> 'YYYY-MM-DD' 이건 VARCHAR에 들어간 날짜형식대로 넣어줘야한다.
+
+--과장님 답변
+SELECT NAME  
+      ,BIRTHDAY  
+FROM MEMBER  
+WHERE EXTRACT(MONTH FROM TO_DATE(BIRTHDAY, 'YYYY-MM-DD')) IN ('2', '3', '11', '12');  
+
+&nbsp;
+##### ♠EX) 가입한 회원중에 가입한지 6개월이 안되는 회원을 조회하시오
+1) ADD_MONTHS 사용  
+WHERE ADD_MONTHS(SYSDATE, -6) < REGDATE;
+
+4) MONTHS_BETWEEN(날짜, 날짜) : 날짜의 차이를 알아내는 함수  
+WHERE MONTHS_BETWEEN(SYSDATE, REGDATE) < 6; --이렇게 할 수도 있당  
+
+
+
+
+&nbsp;
+&nbsp;
+
+    ★AS 명칭 쓰기
+    SELECT (EXTRACT(MONTH FROM SYSDATE) || '월') AS '월만추출' FROM DUAL; -- X
+    SELECT (EXTRACT(MONTH FROM SYSDATE) || '월') AS 월만추출 FROM DUAL; -- O
