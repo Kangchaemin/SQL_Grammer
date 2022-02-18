@@ -102,7 +102,7 @@ FROM all_col_comments WHERE comments LIKE ~~쓰면 된다.
 &nbsp;
 
 ## ※문자열 함수
-&nbsp;
+
 ### ◎SUBSTR(문자열, 시작위치, 길이)
     SELECT SUBSTR('HELLO', 1, 3) FROM 테이블
     SUBSTRB('HELLO', 3) -> Byte단위로 자른다(??)
