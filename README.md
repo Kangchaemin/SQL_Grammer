@@ -115,7 +115,7 @@ SELECT NAME, SUBSTR(BIRTHDAY, 6, 2) FROM MEMBER; -- 6번째글자부터 2글자�
 WHERE SUBSTR(PHONE, 1, 3) = '011'; -> 함수를 쓰는것이 속도문제에서 걸린다.  
 WHERE PHONE LIKE '011%' -> 이렇게 하는것이 더 바람직하다.  
 > LIKE가 먼저다 라는 생각을 항상 가지고 있으면 좋다.
-
+&nbsp;
 #### ♠EX) 회원중에서 생년월일이 7, 8, 9월인 회원정보 출력 
 SELECT * FROM MEMBER WHERE PHONE IS NULL AND SUBSTR(BIRTHDAY, 6, 2) IN (7, 8, 9);  
 SELECT * FROM MEMBER WHERE PHONE IS NULL AND SUBSTR(BIRTHDAY, 6, 2) IN ('07', '08', '09');
