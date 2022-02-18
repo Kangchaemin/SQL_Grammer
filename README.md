@@ -93,3 +93,44 @@ FROM all_col_comments WHERE comments LIKE ~~쓰면 된다.
 ### ◎SUBSTR(문자열, 시작위치, 길이)
     SELECT SUBSTR('HELLO', 1, 3) FROM 테이블
     SUBSTRB('HELLO', 3) -> Byte단위로 자른다(??)
+
+##### EX) 모든학생의 이름과 출생 월만을 조회하시오
+
+SELECT NAME, SUBSTR(BIRTHDAY, 6, 2) FROM MEMBER; -- 6번째글자부터 2글자만 SUBSTRING해주세요.  
+&nbsp;
+##### EX) 회원중에서 전화번호가 011로 시작하는 회원의 정보 출력
+WHERE SUBSTR(PHONE, 1, 3) = '011'; -> 함수를 쓰는것이 속도문제에서 걸린다.  
+WHERE PHONE LIKE '011%' -> 이렇게 하는것이 더 바람직하다.  
+> LIKE가 먼저다 라는 생각을 항상 가지고 있으면 좋다.
+
+##### EX) 회원중에서 생년월일이 7, 8, 9월인 회원정보 출력 
+SELECT * FROM MEMBER WHERE PHONE IS NULL AND SUBSTR(BIRTHDAY, 6, 2) IN (7, 8, 9);  
+SELECT * FROM MEMBER WHERE PHONE IS NULL AND SUBSTR(BIRTHDAY, 6, 2) IN ('07', '08', '09');
+
+&nbsp;
+### ◎문자열 덧셈 함수
+    CONCAT('홍', '길동')
+
+    <<문자열 연산
+    3 + '4'
+    3 || '4' -> 연산자로 쓰는것이 성능이 더 빠르다. 
+
+&nbsp;
+### ◎TRIM 함수 : 빈공백을 없애주는 함수
+    LTRIM -> 왼쪽공백만  
+    RTRIM  
+    TRIM -> 양쪽의 빈공백을 없애준다  
+
+&nbsp;
+### ◎ 모두 대소문자로 변경하기
+    LOWER('AFJDFKDJKF  
+    UPPER
+
+##### EX) 회원의 아이디가 'NEWR'인 사람을 조회하시오(대소문자 상관없이)  
+SELECT * FROM MEMBER WHERE UPPER(NAME) = 'jjj';  
+
+##### ex) 이름과 생년월일에서 -을 뺀것을 출력하시오  
+SELECT NAME, REPLACE(BIRTHDAY, '-', '') FROM MEMBER;   
+
+&nbsp;
+### ◎ LPAD, RPAD도 알아두기. (문자열 함수에서) 
