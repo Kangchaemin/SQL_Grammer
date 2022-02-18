@@ -23,6 +23,9 @@
 
 
 ```
+&nbsp;
+&nbsp;
+
 ## ※CHARACTER 형식
 
 #### ▶Oracle에서는 문자열을 '' 으로 표시한다. (""아님!)
@@ -72,6 +75,9 @@ NOT을 쓸려면 WHERE 조회수 NOT IN(0, 2, 7) : 0, 2, 7만 빼고.
 WHERE 회원이름 LIKE '박%';  
 > ★--회원이름 = '박%' : 이렇게 하면 진짜 박%를 찾게된다. 
 
+&nbsp;
+&nbsp;
+
 ## ※ALL_TAB_COMMENTS
 > all_tab_comments : 테이블에 관련된 정보를 한눈에 볼 수 있다.
 all_tables작성방법
@@ -81,6 +87,8 @@ FROM all_col_comments WHERE comments LIKE ~~쓰면 된다.
 
 **정규식도 참고해보면 좋다.
 
+&nbsp;
+&nbsp;
 ## ※정규식
 ```sh
 
@@ -90,6 +98,9 @@ FROM all_col_comments WHERE comments LIKE ~~쓰면 된다.
 
 
 ```
+&nbsp;
+&nbsp;
+
 ## ※문자열 함수
 &nbsp;
 ### ◎SUBSTR(문자열, 시작위치, 길이)
