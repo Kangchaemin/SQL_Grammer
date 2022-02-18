@@ -277,3 +277,10 @@ WHERE MONTHS_BETWEEN(SYSDATE, REGDATE) < 6; --이렇게 할 수도 있당
 ## ※형식변환 함수
 
 ![형식변환함수](https://user-images.githubusercontent.com/43837994/154638391-624af7dc-6c5c-4929-889c-eca0c48f7067.PNG)
+
+to_char에서 쓰일 포맷문자 형식  
+![to_char에서 포맷문자 형식](https://user-images.githubusercontent.com/43837994/154638698-9966197c-a442-4a79-abb6-7adcc86fcae3.PNG)
+
+to_char에서 date -> string일때 이 string의 형식을 지정해줄 수 있다.  
+![to_Date 포맷문자형식](https://user-images.githubusercontent.com/43837994/154639836-3e0352ff-209b-46f1-a7a6-a7ed09448db8.PNG)
+
