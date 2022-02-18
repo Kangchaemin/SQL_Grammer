@@ -41,7 +41,7 @@
 > TIMESTAP : 'DATE형식 + 시분초까지'
 
 &nbsp;
-
+&nbsp;
 ## ※OR, AND, BETWEEN, IN
 > IN을 쓰는것이 속도에 더 좋다.
 #### EX) 조회수가 0, 1, 2인 게시글을 조회하시오
@@ -63,6 +63,8 @@ WHERER 조회수 == 0 OR .... ▶ 비효휼적.
 NOT을 쓸려면 WHERE 조회수 NOT IN(0, 2, 7) : 0, 2, 7만 빼고.
 -.> IN절 안에 SELECT절이 추가로 들어갈 수 있다. 
 
+&nbsp;
+&nbsp;
 ## ※LIKE, %  
 > _은 한문자 / %는 모든문자. 
 
