@@ -157,7 +157,7 @@ SELECT * FROM MEMBER WHERE UPPER(NAME) = 'jjj';
 SELECT NAME, REPLACE(BIRTHDAY, '-', '') FROM MEMBER;   
 
 &nbsp;
-### ◎ LPAD, RPAD도 알아두기. (문자열 함수에서) 
+### ◎ LPAD, RPAD
 > 문자열 패딩함수
 
     select LPAD('HELLO', 5) from dual -- 패딩영역이 없기 때문에 문자가 출력되지 않는다.   
@@ -169,6 +169,43 @@ select lpad(이름, 3, '_') from table;
 ▶근데 3이라는게 한글일경우 길이가 적용되지 않는다.   
 
 > ★따라서 한글이나, 영문이냐에 따라 padding함수를 잘 활용해야한다. 
+
+&nbsp;
+### ◎  INITCAP(문자열) 
+> 첫글자를 대문자로 바꾸는 함수
+select  initcap('the....') -- The  
+select initcap('the camp') -- The Camp (모든 띄어쓰기마다 대문자가 씌워진다.)  
+select initcap('the im하이mp c오케mp') -- The Im하이Mp C오케Mp (모든 한글 다음에도 대문자로 표현된다)  
+
+&nbsp;
+### ◎  INSTR(문자열, 검색문자열, 위치, 찾을 수)
+> 문자열 검색함수  
+select instr('all we need' 'all') -- all이 나온 문자열 시작번호를 알려준다. --1  
+select instr('all we need' 'we') -- 5  
+select instr('all we need' 'all', 1) -> 1번째로 나온 숫자 뭐 이런게 아니라 저건 문자열 index번호이다.  
+따라서 index 1 뒤에서부터 count해서 그다음 all이 어디나오냐 약간 이런거다.   
+select instr('all we need' 'all', 1, 2) -> index 1부터 찾되 2번재 나온 문자부터 알려달라 == 두번째 all의 시작위치를 알 수 있다. 
+
+#### ♠EX) 전화번호에서 두 번째 대시문자가 존재하는 위치를 출력하시오
+select instr(phone, '-', 1, 2)
+
+#### ♠EX) 전화번호에서 첫 번째 -문자와 두 번재 - 문자 사이의 간격 출력
+select instr(phone, '-', 1, 2) - instr(phone, '-')  
+**정답:** instr(phone, '-', 1, 2) - instr(phone, '-') -1해야 간격이 출력된다. **index끼리 뺀것이기 때문에**
+
+#### ♠EX) 전화번호에서 첫번째와 두번재 사이의 국번을 출력하시오 
+substr(phone, 5, 4)  
+  
+**두번째 숫자가 3자리일수도, 4자리일수도 있기 때문에**  
+substr(phone, 5, instr(phone, '-', 1, 2) - instr(phone, '-') -1) 
+
+&nbsp;
+### ◎  LENGTH(문자열) 
+> 문자열 길이를 얻는 함수
+
+#### ♠EX) 회원의 전화번호에서 -을 없앤 전화번호의 길이를 구하시오.
+select length(replace(phone, '-', '')) from member;
+
 &nbsp;
 &nbsp;
 
