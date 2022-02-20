@@ -122,11 +122,22 @@ WHERE PHONE IS NULL AND SUBSTR(BIRTHDAY, 6, 2) IN ('07', '08', '09');
 
 &nbsp;
 ### ◎문자열 덧셈 함수
-    CONCAT('홍', '길동')
-
-    <<문자열 연산
-    3 + '4'
+> CONCAT('홍', '길동')
+    
+&nbsp;
+&nbsp;
+**<<문자열 더하기 연산자는 무조건 || 이다>>**
+    
+    select 1 + '2'하면   
+    12가 나올것으로 예상하지만, oracle에서는 4가 나온다.
+    oracle에서는 +연산자는 무조건 숫자에서만 이뤄지기 때문이다.  
+    
     3 || '4' -> 연산자로 쓰는것이 성능이 더 빠르다. 
+    
+
+#### ♠EX)모든 회원의 이름을 조회하시오(단, 이름은 ID를 붙여서 나타내시오)
+select name || ( || ID || )  
+정답: select name || '(' || ID || ')'
 
 &nbsp;
 ### ◎TRIM 함수 : 빈공백을 없애주는 함수
@@ -147,7 +158,17 @@ SELECT NAME, REPLACE(BIRTHDAY, '-', '') FROM MEMBER;
 
 &nbsp;
 ### ◎ LPAD, RPAD도 알아두기. (문자열 함수에서) 
+> 문자열 패딩함수
 
+    select LPAD('HELLO', 5) from dual -- 패딩영역이 없기 때문에 문자가 출력되지 않는다.   
+    select LPAD('HELLO', 10, '0') from dual -- 나머지 5개가 0으로 채워진다. --00000HELLO : 오른쪽 정렬  
+    select RPAD('HELLO', 10, '0') from dual --HELLO00000  
+    
+#### ♠EX) 이름을 조회하시오(단, 이름의 길이가 3글자가 안되는 경우에는 이름 오른쪽을 '_'로 채우시오
+select lpad(이름, 3, '_') from table;  
+▶근데 3이라는게 한글일경우 길이가 적용되지 않는다.   
+
+> ★따라서 한글이나, 영문이냐에 따라 padding함수를 잘 활용해야한다. 
 &nbsp;
 &nbsp;
 
@@ -233,7 +254,7 @@ SELECT LAST_DAY(ADD_MONTHS(SYSDATE, 2)) FROM DUAL; -> 4월의 마지막날이 �
 
 7) 날짜에서도 ROUND랑 TRUNC가 사용된다.
 
-##### ♠EX) BRTHDAY의 YEAR만 뽑아보기
+#### ♠EX) BRTHDAY의 YEAR만 뽑아보기
 SELECT EXTRACT(YEAR FROM MEMBER.BIRTHDAY)  
 FROM MEMBER;  
 > BIRTHDAY는 지금 VARCHAR 형식이여서 추출이 안된다. 따라서 DATE형식으로 바꿔줘야 인식이된다.   
@@ -241,7 +262,7 @@ EXTRACT(YEAR FROM TO_DATE(BIRTHDAY,'YYYY-MM-DD'))
 
 
 &nbsp;
-##### ♠EX)  가입한 회원중에 2, 3, 11월에 태어난 사람의 이름과 생일 출력
+#### ♠EX)  가입한 회원중에 2, 3, 11월에 태어난 사람의 이름과 생일 출력
 SELECT NAME, BIRTHDAY  
 FROM MEMBER  
 WHERE EXTRACT(MONTH FROM TO_DATE(BIRTHDAY,'YYYY-MM-DD')) IN (2, 3, 11, 12); 
@@ -254,7 +275,7 @@ FROM MEMBER
 WHERE EXTRACT(MONTH FROM TO_DATE(BIRTHDAY, 'YYYY-MM-DD')) IN ('2', '3', '11', '12');  
 
 &nbsp;
-##### ♠EX) 가입한 회원중에 가입한지 6개월이 안되는 회원을 조회하시오
+#### ♠EX) 가입한 회원중에 가입한지 6개월이 안되는 회원을 조회하시오
 1) ADD_MONTHS 사용  
 WHERE ADD_MONTHS(SYSDATE, -6) < REGDATE;
 
