@@ -336,9 +336,23 @@ WHERE MONTHS_BETWEEN(SYSDATE, REGDATE) < 6; --이렇게 할 수도 있당
 
 ![형식변환함수](https://user-images.githubusercontent.com/43837994/154638391-624af7dc-6c5c-4929-889c-eca0c48f7067.PNG)
 
-to_char에서 쓰일 포맷문자 형식  
+&nbsp;
+&nbsp;
+
+### 1. TO_CHAR()
+> NUMBER, DATE ▶ VARCHAR2
+TO_CHAR(number)
+
+#### ♠EX) 
+* TO_CHAR(number, '$99,999,999') ▶뒤의 형식은 숫자보다 길어야함.  
+* select TO_CHAR(123, '9999,9') || 'hello' ▶ 공백이 빈칸으로 나오게된다. ▶     _____12,3hello(_은 공백)  
+▶공백을 없애고 싶으면 trim함수를 써도 된다.
+
+&nbsp;
+**TO_CHAR에서 NUMBER▶STRING로 바꿀때 쓰일 포맷문자 형식**  
 ![to_char에서 포맷문자 형식](https://user-images.githubusercontent.com/43837994/154638698-9966197c-a442-4a79-abb6-7adcc86fcae3.PNG)
 
-to_char에서 date -> string일때 이 string의 형식을 지정해줄 수 있다.  
+&nbsp;
+**TO_CHAR에서 DATE▶STRING로 바꿀때 쓰일 포맷문자 형식**
 ![to_Date 포맷문자형식](https://user-images.githubusercontent.com/43837994/154639836-3e0352ff-209b-46f1-a7a6-a7ed09448db8.PNG)
 
