@@ -26,9 +26,26 @@
 &nbsp;
 &nbsp;
 
+## ▶Oracle에서는 문자열을 '' 으로 표시한다. (""아님!)
+
+
+&nbsp;
+&nbsp;
+
+    ★AS 명칭 쓰기 ▶AS 명칭을 쓸때에는 ""으로 묶는다. 
+    SELECT SUM(price) 총계  
+    SEELCT SUM(price) "총계"  
+    SEELCT SUM(price) AS 총계
+    SEELCT SUM(price) AS "총계"  
+    SEELCT SUM(price) AS "판매 총계" ▶ 별칭이름에 공백이 포함될 경우에는 반드시 "" 사용  
+
+----------------
+&nbsp;
+
+
 ## ※CHARACTER 형식
 
-#### ▶Oracle에서는 문자열을 '' 으로 표시한다. (""아님!)
+
 
 ```sh
 1) CHAR : CHAR(50)처럼 쓰며 50의 공간을 쓰지않아도 50개의 공간을 차지하고있다. 
@@ -68,7 +85,7 @@ NOT을 쓸려면 WHERE 조회수 NOT IN(0, 2, 7) : 0, 2, 7만 빼고.
 
 &nbsp;
 &nbsp;
-## ※LIKE, %  
+## ※LIKE, % == 문자열 패턴을 비교할때 쓰는 연산자    
 > _은 한문자 / %는 모든문자. 
 
 ##### ♠EX) *회원 중에서 '박'씨 성을 조회하시오.
@@ -85,7 +102,7 @@ all_tables작성방법
 > comment를 달았기때문에 정보를 참고할 수 있다.
 FROM all_col_comments WHERE comments LIKE ~~쓰면 된다.   
 
-**정규식도 참고해보면 좋다.
+**정규식도 참고해보면 좋다. ▶ 정규식은 SQL_RULE편에 있다. 
 
 &nbsp;
 &nbsp;
@@ -322,12 +339,6 @@ WHERE MONTHS_BETWEEN(SYSDATE, REGDATE) < 6; --이렇게 할 수도 있당
 
 
 
-&nbsp;
-&nbsp;
-
-    ★AS 명칭 쓰기
-    SELECT (EXTRACT(MONTH FROM SYSDATE) || '월') AS '월만추출' FROM DUAL; -- X
-    SELECT (EXTRACT(MONTH FROM SYSDATE) || '월') AS 월만추출 FROM DUAL; -- O
     
 &nbsp;
 &nbsp;
