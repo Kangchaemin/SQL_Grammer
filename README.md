@@ -42,6 +42,15 @@
 ----------------
 &nbsp;
 
+## ※DISTINCT 사용법
+
+    SELECT DISTINCT(컬럼명) FROM 테이블명  
+    
+    ** COUNT를 같이 사용할때**  
+    SELECT **COUNT(DISTINCT 컬럼명)** FROM 테이블명
+
+----------------
+&nbsp;
 
 ## ※CHARACTER 형식
 
