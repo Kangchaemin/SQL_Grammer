@@ -1,5 +1,7 @@
 # _SQL_Grammer_
 &nbsp;
+## ◆ [sql 문제풀이중 문법] (https://github.com/Kangchaemin/SQL_Grammer/blob/main/problem/README.md)
+&nbsp;
 ## ※DDL, DML, DCL에 관련해서
 
 | 용어 | 종류 |
