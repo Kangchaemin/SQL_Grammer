@@ -28,3 +28,7 @@ WHERE LEFT(CITY, 1) NOT IN ('A', 'E', 'I', 'O', 'U')
       OR RIGHT(CITY, 1) NOT IN ('A', 'E', 'I', 'O', 'U');  
 이렇게 해주면 된다. 
 
+
+&nbsp;  
+#### ♣GROUP BY 사용시 SELECT 절 
+> GROUP BY를 사용하는 경우, SELECT할 수 있는 컬럼은 GROUP BY에 나열된 컬럼과 SUM(), COUNT() 같은 집계 함수(Aggregation Function)으로 한정 
