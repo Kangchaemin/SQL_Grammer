@@ -17,3 +17,12 @@ ex) email이 2번 중복되는 컬럼만 보여주시오.
   HAVING count(id) >= 2  
   
 ★ group by를 연산한 컬럼을 가지고 필터링 하고싶을때는 having 절을 사용하면 된다. 
+
+
+#### 문자열의 시작과 끝을 확인해아할때 
+
+▶ 문자열의 시작과 끝이 모음이 아닌 경우를 출력하는경우에는  
+WHERE LEFT(CITY, 1) NOT IN ('A', 'E', 'I', 'O', 'U')
+      OR RIGHT(CITY, 1) NOT IN ('A', 'E', 'I', 'O', 'U');  
+이렇게 해주면 된다. 
+
